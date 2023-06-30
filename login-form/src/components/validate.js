@@ -1,11 +1,28 @@
-export const validate = data => {
+export const validate = (data,type) => {
     const errors = {};
-    // Username Validation
-    if(!data.name.trim()){
-        errors.name = "Username required"
-    }else{
-        delete errors.name
-    }
+    if(type === "signup"){
+        // Username Validation
+        if(!data.name.trim()){
+            errors.name = "Username required"
+        }else{
+            delete errors.name
+        }
+        // ConfirmPassword Validation
+        if(!data.confirmPassword){
+            errors.confirmPassword = "confirm the password"
+        }else if (data.confirmPassword !== data.password){
+            errors.confirmPassword = "password do not match"
+        }else {
+            delete errors.confirmPassword
+        }
+        // isAccepted Validation
+        if(data.isAccepted){
+            delete errors.isAccepted
+        }else{
+            errors.isAccepted = "Accept our requlations"
+        }
+    };
+
     // Email Validation
     if(!data.email){
         errors.email = "Email required"
@@ -22,19 +39,6 @@ export const validate = data => {
     }else{
         delete errors.password
     }
-    // ConfirmPassword Validation
-    if(!data.confirmPassword){
-        errors.confirmPassword = "confirm the password"
-    }else if (data.confirmPassword !== data.password){
-        errors.confirmPassword = "password do not match"
-    }else {
-        delete errors.confirmPassword
-    }
-    // isAccepted Validation
-    if(data.isAccepted){
-        delete errors.isAccepted
-    }else{
-        errors.isAccepted = "Accept our requlations"
-    }
+    
     return errors;
 }

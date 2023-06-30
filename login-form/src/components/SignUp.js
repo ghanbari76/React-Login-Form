@@ -1,4 +1,7 @@
-import React,{ useState } from 'react';
+import React,{ useState,useEffect } from 'react';
+
+//Validation Function
+import { validate } from './validate';
 
 const SignUp = () => {
     const [data,setData] = useState({
@@ -8,6 +11,12 @@ const SignUp = () => {
         confirmPassword : "",
         isAccepted : false,
     })
+    const [errors,setErrors] = useState({});
+    
+    useEffect(() => {
+        setErrors(validate(data))
+        console.log(errors)
+    },[data])
 
     const changeHandler = event => {
         if (event.target.name === "isAccepted"){
@@ -15,7 +24,6 @@ const SignUp = () => {
         }else {
             setData({...data,[event.target.name] : event.target.value})
         }
-        console.log(data)
     }
 
     return (
@@ -44,7 +52,7 @@ const SignUp = () => {
                 </div>
                 <div>
                     <a href='#'>Login</a>
-                    <button>Sign Up</button>
+                    <button type='submite'>Sign Up</button>
                 </div>
             </form>
         </div>

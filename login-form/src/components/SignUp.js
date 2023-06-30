@@ -6,31 +6,41 @@ const SignUp = () => {
         email : "",
         password : "",
         confirmPassword : "",
-        isAccepted : false
+        isAccepted : false,
     })
+
+    const changeHandler = event => {
+        if (event.target.name === "isAccepted"){
+            setData({...data,[event.target.name] : event.target.checked})
+        }else {
+            setData({...data,[event.target.name] : event.target.value})
+        }
+        console.log(data)
+    }
+
     return (
         <div>
             <form>
                 <h2>SignUp</h2>
                 <div>
                     <label>Name</label>
-                    <input type='text' name='name' value={data.name} />
+                    <input type='text' name='name' value={data.name} onChange={changeHandler}/>
                 </div>
                 <div>
                     <label>Email</label>
-                    <input type='text' name='email' value={data.email} />
+                    <input type='text' name='email' value={data.email} onChange={changeHandler}/>
                 </div>
                 <div>
                     <label>Password</label>
-                    <input type='password' name='password' value={data.password} />
+                    <input type='password' name='password' value={data.password} onChange={changeHandler}/>
                 </div>
                 <div>
                     <label>ConfirmPassword</label>
-                    <input type='password' name='confirmPassword' value={data.confirmPassword} />
+                    <input type='password' name='confirmPassword' value={data.confirmPassword} onChange={changeHandler}/>
                 </div>
                 <div>
                     <label>I accept terms of privacy policy</label>
-                    <input type='checkbox' name='isAccepted' value={data.isAccepted} />
+                    <input type='checkbox' name='isAccepted' value={data.isAccepted} onChange={changeHandler}/>
                 </div>
                 <div>
                     <a href='#'>Login</a>

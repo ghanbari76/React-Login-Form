@@ -3,6 +3,11 @@ import React,{ useState,useEffect } from 'react';
 //Validation Function
 import { validate } from './validate';
 
+// React-Toastify
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { notify } from './toast';
+
 const SignUp = () => {
     const [data,setData] = useState({
         name : "",
@@ -28,12 +33,15 @@ const SignUp = () => {
     const focusHandler = event => {
         setTouched({...touched,[event.target.name]:true})
     }
+    
     const submitHandler = event => {
         event.preventDefault();
         if(!Object.keys(errors).length){
-            console.log("You signed in successfully")
+            notify("You signed up successfully","success")
+            // console.log("You signed up successfully")
         }else {
-            console.log("Invalid data")
+            notify("Invalid data","error")
+            // console.log("Invalid data")
             setTouched({
                 name : true,
                 email : true,
@@ -78,6 +86,7 @@ const SignUp = () => {
                     <button type='submite'>Sign Up</button>
                 </div>
             </form>
+            <ToastContainer />
         </div>
     );
 };

@@ -11,6 +11,8 @@ import { notify } from './toast';
 //Styles
 import styles from "./SignUp.module.css";
 
+import { Link } from 'react-router-dom';
+
 const Login = () => {
     const [data,setData] = useState({
         email : "",
@@ -58,7 +60,7 @@ const Login = () => {
                      {errors.password && touched.password && <span>{errors.password}</span>}
                 </div>
                 <div className={styles.formButtons}>
-                    <a href='#'>Sign Up</a>
+                    <Link to='/signup'>Sign Up</Link>
                     <button type='submite'>Login</button>
                 </div>
             </form>

@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { notify } from './toast';
 
 //Styles
-import styles from "./SignUp.module.css"
+import styles from "./SignUp.module.css";
 
 const SignUp = () => {
     const [data,setData] = useState({
@@ -66,17 +66,17 @@ const SignUp = () => {
                 </div>
                 <div className={styles.formField}>
                     <label>Email</label>
-                    <input type='text' name='email' value={data.email} onChange={changeHandler} onFocus={focusHandler}/>
+                    <input className={(errors.email && touched.email) ? styles.uncompleted : styles.formInput} type='text' name='email' value={data.email} onChange={changeHandler} onFocus={focusHandler}/>
                      {errors.email && touched.email && <span>{errors.email}</span>}
                 </div>
                 <div className={styles.formField}>
                     <label>Password</label>
-                    <input className={(errors.name && touched.name) ? styles.uncompleted : styles.formInput} type='password' name='password' value={data.password} onChange={changeHandler} onFocus={focusHandler}/>
+                    <input className={(errors.password && touched.password) ? styles.uncompleted : styles.formInput} type='password' name='password' value={data.password} onChange={changeHandler} onFocus={focusHandler}/>
                      {errors.password && touched.password && <span>{errors.password}</span>}
                 </div>
                 <div className={styles.formField}>
                     <label>ConfirmPassword</label>
-                    <input className={(errors.name && touched.name) ? styles.uncompleted : styles.formInput} type='password' name='confirmPassword' value={data.confirmPassword} onChange={changeHandler} onFocus={focusHandler}/>
+                    <input className={(errors.confirmPassword && touched.confirmPassword) ? styles.uncompleted : styles.formInput} type='password' name='confirmPassword' value={data.confirmPassword} onChange={changeHandler} onFocus={focusHandler}/>
                      {errors.confirmPassword && touched.confirmPassword && <span>{errors.confirmPassword}</span>}
                 </div>
                 <div className={styles.formField}>
@@ -91,7 +91,7 @@ const SignUp = () => {
                     <button type='submite'>Sign Up</button>
                 </div>
             </form>
-            <ToastContainer />
+            <ToastContainer className={styles.toast} />
         </div>
     );
 };

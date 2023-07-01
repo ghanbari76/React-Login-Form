@@ -1,4 +1,5 @@
 import React,{ useState,useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 //Validation Function
 import { validate } from './validate';
@@ -10,8 +11,6 @@ import { notify } from './toast';
 
 //Styles
 import styles from "./SignUp.module.css";
-
-import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     const [data,setData] = useState({
